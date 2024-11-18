@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Alumni</title>
+    <style>
+        /* Gaya untuk input pencarian */
+        .search-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+
+        /* Gaya dasar untuk profil alumni */
+        .alumni-profile {
+            width: 250px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .alumni-profile img.profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .alumni-name {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .alumni-description {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        /* Efek hover */
+        .alumni-profile:hover {
+            transform: translateY(-10px); /* Geser sedikit ke atas */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+        }
+
+        .alumni-profile:hover .alumni-name {
+            color: #007BFF; /* Ubah warna nama alumni saat hover */
+        }
+
+        .alumni-profile:hover .alumni-description {
+            color: #555; /* Ubah warna bio saat hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Form pencarian alumni -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Cari alumni...">
+    </div>
+
+    <!-- Daftar alumni -->
+    <div class="alumni-list" id="alumniList">
+        <!-- Setiap alumni akan ditampilkan di sini -->
+        <div class="alumni-profile" data-name="Giselle Aulia" data-major="Sistem Informasi">
+            <img src="WDHND57G.jpg" alt="Alumni Photo" class="profile-photo">
+            <h3 class="alumni-name">Giselle Aulia</h3>
+            <p class="alumni-description">
+                Giselle Aulia adalah alumni Program Studi Sistem Informasi di Universitas Kuningan, lulus pada tahun 2018. 
+                Selama masa kuliahnya, Giselle dikenal sebagai mahasiswa yang berprestasi, aktif dalam berbagai organisasi kampus, 
+                dan memiliki minat besar dalam pengembangan sistem informasi dan teknologi digital.
+            </p>
+        </div>
+
+        <!-- Alumni lain -->
+        <div class="alumni-profile" data-name="Jung Jamal" data-major="Teknik Informatika">
+            <img src="Jaehyun(1).jpg" alt="Alumni Photo" class="profile-photo">
+            <h3 class="alumni-name">Jung Jamal</h3>
+            <p class="alumni-description">
+                Jung Jamal adalah alumni Program Studi Teknik Informatika di Universitas Kuningan, lulus pada tahun 2015. 
+                Sejak lulus, John berkarir sebagai pengembang perangkat lunak dan saat ini menjabat sebagai Lead Developer.
+            </p>
+        </div>
+
+        <!-- Alumni lainnya -->
+        <div class="alumni-profile" data-name="Ruby Jane" data-major="Manajemen Informatika">
+            <img src="Simmetrik Jennie icon.jpg" alt="Alumni Photo" class="profile-photo">
+            <h3 class="alumni-name">Ruby Jane</h3>
+            <p class="alumni-description">
+                Ruby Jane adalah alumni Program Studi Manajemen Informatika di Universitas Kuningan. Setelah lulus, Alice bekerja 
+                sebagai Project Manager di perusahaan teknologi terkemuka.
+            </p>
+        </div>
+
+       
+        <div class="alumni-profile" data-name="Kaisar" data-major="Sistem Informasi">
+            <img src="VH_8SHeD.jpg" alt="Alumni Photo" class="profile-photo">
+            <h3 class="alumni-name">Kaisar</h3>
+            <p class="alumni-description">
+                Kaisar adalah alumni Program Studi Sistem Informasi yang kini bekerja sebagai Software Engineer di perusahaan
+                perangkat lunak besar.
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript untuk pencarian -->
+    <script>
+        // Mendapatkan elemen input pencarian
+        const searchInput = document.getElementById('searchInput');
+
+        // Mendapatkan semua elemen alumni
+        const alumniProfiles = document.querySelectorAll('.alumni-profile');
+
+        // Fungsi untuk memfilter alumni berdasarkan input pencarian
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            // Menelusuri setiap profil alumni dan memeriksa apakah nama atau jurusan cocok dengan pencarian
+            alumniProfiles.forEach(function (profile) {
+                const name = profile.getAttribute('data-name').toLowerCase();
+                const major = profile.getAttribute('data-major').toLowerCase();
+
+                // Jika nama atau jurusan mengandung teks pencarian, tampilkan; jika tidak, sembunyikan
+                if (name.includes(searchTerm) || major.includes(searchTerm)) {
+                    profile.style.display = 'inline-block';  // Tampilkan profil
+                } else {
+                    profile.style.display = 'none';  // Sembunyikan profil
+                }
+            });
+        });
+    </script>
+</body>
+</html>
